@@ -1,45 +1,51 @@
 # España, pieza a pieza
 
-A drag-and-drop jigsaw for learning the provinces and autonomous communities of Spain. Every piece has the real shape of its territory; drop it close to the right place and it snaps in, locks and shows its name. Built for a secondary-school student practising on an iPad, but it works in any modern browser.
+Un puzle de arrastrar y soltar para aprender las provincias y las comunidades autónomas de España. Cada pieza tiene la forma real de su territorio: si la sueltas cerca de su sitio, encaja, se queda fija y muestra su nombre. Pensado para que una alumna de secundaria practique en un iPad, pero funciona en cualquier navegador moderno.
 
+**Juega aquí:** https://miguelschneider.github.io/puzzle-espana/
 
-## Why a jigsaw
+## Por qué un puzle
 
-Most map-quiz sites shout a name and ask you to click it. If you have no idea where the place is, you learn nothing. Here the piece tells you its name and its community while you hold it, so the task is "find where this goes", with the shape, the colour and the coastline all helping. Wrong drops are not punished, just nudged.
+La mayoría de los juegos de mapas te dicen un nombre y te piden que lo señales. Si no tienes ni idea de dónde está, no aprendes nada. Aquí la pieza te dice su nombre y su comunidad mientras la sujetas, así que la tarea es "averigua dónde va", con la forma, el color y la costa como ayuda. Los fallos no se penalizan: se corrigen.
 
-## Features
+## Modos de juego
 
-- 52 province pieces (50 provinces plus Ceuta and Melilla) or 19 community pieces, from official IGN geometry.
-- Pieces are coloured by autonomous community, so building the province map also teaches the communities.
-- Feedback by distance: snap when correct, "Casi" with a shake when a little off, "Ahí no" when dropped elsewhere.
-- Four hint levels, cycled with one button, from hardest to easiest:
-  1. Silhouette of Spain only
-  2. Community borders
-  3. Community and province borders
-  4. Communities tinted with the colours of their pieces
-- Ceuta and Melilla get an enlarged grab handle, a wider snap tolerance and a guide ring that lights up when the piece is near its target.
-- Timer, miss counter and best time per mode (stored in the browser, nothing leaves the device).
-- Touch, mouse and pen. Landscape layout puts the tray on both sides of the map; portrait puts it below.
-- Light and dark theme, fullscreen button, and iOS web-app tags so it runs without browser chrome when added to the home screen.
+- **Puzle**: las piezas salen desordenadas en la bandeja y hay que colocarlas en el mapa. Encajan solas cuando la posición es correcta; si está casi, la pieza tiembla y avisa ("Casi"); si está lejos, avisa de que va en otra parte ("Ahí no").
+- **¿Dónde está?**: el mapa aparece completo y sin colorear; el juego pregunta por una provincia y hay que tocarla. Al acertar se pinta con el color de su comunidad. Si fallas, te dice qué has tocado; al segundo fallo revela la correcta y la vuelve a preguntar más adelante.
 
-## Running it
+Ambos modos se juegan con las 52 provincias (50 más Ceuta y Melilla) o con las 19 comunidades autónomas.
 
-It is a single self-contained `index.html`. No build step, no dependencies at runtime.
+## Funcionalidades
 
-- **GitHub Pages:** Settings → Pages → Deploy from branch `main`, folder `/ (root)`.
-- **Local:** `python3 -m http.server 8000` in this folder, then open `http://localhost:8000/`.
-- **iPad full screen:** open the Pages URL in Safari → Share → *Add to Home Screen*. Launching from the icon hides the address bar and tabs. Guided Access (Settings → Accessibility) prevents accidental exits.
+- Geometría oficial del Instituto Geográfico Nacional.
+- Piezas coloreadas por comunidad autónoma: al montar el mapa de provincias se aprenden también las comunidades.
+- Cuatro niveles de pista, de más difícil a más fácil, que se recorren con un botón:
+  1. Solo la silueta de España
+  2. Bordes de las comunidades
+  3. Bordes de comunidades y provincias
+  4. Comunidades coloreadas con el mismo color que sus piezas
+- Ceuta y Melilla tienen un asa de agarre ampliada, mayor tolerancia de encaje y un anillo guía que se enciende al acercarse a su sitio.
+- Cronómetro, contador de fallos y mejor tiempo por modo (guardado en el navegador; nada sale del dispositivo).
+- Táctil, ratón y lápiz. En horizontal la bandeja va a ambos lados del mapa; en vertical, debajo.
+- Tema claro y oscuro, botón de pantalla completa y etiquetas de web app de iOS para que funcione sin barra del navegador al añadirlo a la pantalla de inicio.
 
-The only external request is Google Fonts (Fredoka); offline it falls back to the system font.
+## Cómo ejecutarlo
 
-## Interface language
+Es un único archivo `index.html`, autocontenido. Sin compilación ni dependencias en tiempo de ejecución.
 
-The interface is in Spanish, as its audience is Spanish schoolchildren. Province names use the official bilingual forms from the IGN dataset, shown with the first form on the piece (e.g. *Alacant/Alicante* → *Alacant*).
+- **En local:** `python3 -m http.server 8000` en esta carpeta y abrir `http://localhost:8000/`.
+- **iPad a pantalla completa:** abrir la URL en Safari → Compartir → *Añadir a pantalla de inicio*. Al lanzarlo desde el icono desaparecen la barra de direcciones y las pestañas. El Acceso Guiado (Ajustes → Accesibilidad) evita salidas accidentales.
 
-## Data
+La única petición externa es la tipografía (Google Fonts, Fredoka); sin conexión usa la del sistema.
 
-Geometry comes from [es-atlas](https://github.com/martgnz/es-atlas) (TopoJSON from the Instituto Geográfico Nacional, MIT licence), projected once at build time with `geoConicConformalSpain` from [d3-composite-projections](https://github.com/rveciana/d3-composite-projections), which places the Canary Islands in an inset near the mainland. The projected SVG paths are inlined in the HTML, which is why no map library is loaded in the browser. Gibraltar is excluded.
+## Nombres
 
-## Licence
+La interfaz está en castellano y los topónimos usan la forma castellana (Alicante, Álava, Guipúzcoa, Vizcaya, La Coruña, Orense, Lérida, Gerona, Islas Baleares, Comunidad Valenciana), en lugar de las formas oficiales bilingües del conjunto de datos.
 
-Code: MIT. Map geometry: © Instituto Geográfico Nacional, via es-atlas (MIT).
+## Datos
+
+La geometría procede de [es-atlas](https://github.com/martgnz/es-atlas) (TopoJSON del Instituto Geográfico Nacional, licencia MIT), proyectada una sola vez en tiempo de construcción con `geoConicConformalSpain` de [d3-composite-projections](https://github.com/rveciana/d3-composite-projections), que sitúa las Canarias en un recuadro junto a la península. Los trazados SVG resultantes van incrustados en el HTML, por lo que el navegador no carga ninguna librería de mapas. Gibraltar queda excluido.
+
+## Licencia
+
+Código: MIT. Geometría del mapa: © Instituto Geográfico Nacional, vía es-atlas (MIT).
