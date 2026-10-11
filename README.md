@@ -2,7 +2,6 @@
 
 A drag-and-drop jigsaw for learning the provinces and autonomous communities of Spain. Every piece has the real shape of its territory; drop it close to the right place and it snaps in, locks and shows its name. Built for a secondary-school student practising on an iPad, but it works in any modern browser.
 
-**Play it:** https://YOUR-USER.github.io/puzzle-espana/
 
 ## Why a jigsaw
 
